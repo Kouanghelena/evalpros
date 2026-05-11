@@ -143,4 +143,18 @@ const App = () => (
   </QueryClientProvider>
 );
 
+import { useEffect } from "react";
+
+function App() {
+  useEffect(() => {
+    fetch("http://192.168.1.139:8000/api/users")
+      .then(res => res.json())
+      .then(data => console.log(data));
+  }, []);
+
+  return <h1>EvalPro</h1>;
+}
+
 export default App;
+
+
