@@ -57,5 +57,31 @@ def startup_event() -> None:
         # Remove legacy FK to subjects for student specialty to allow dedicated filiere ids.
         conn.execute(text("ALTER TABLE student_profiles DROP CONSTRAINT IF EXISTS student_profiles_specialty_id_fkey;"))
 
+from fastapi.middleware.cors import CORSMiddleware
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "http://192.168.1.139:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.include_router(api_router)
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "http://192.168.1.139:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
